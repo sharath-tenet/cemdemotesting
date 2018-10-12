@@ -14,6 +14,7 @@ declare var swal: any;
   providers:[BookComponent]
 })
 export class CartComponent implements OnInit {
+  MPGprice: number=0;
   finhvc: number;
   finhvd: any = [];
 
@@ -421,7 +422,7 @@ export class CartComponent implements OnInit {
     this.loading['data']=true;
     if(this.isTokenSet){
       
-      if(confirm("Proceed to pay?")){
+      if(confirm("Confirm?")){
         this.finalPostList=[];
         if(this.tests!=null){
             this.tests=this.cleanArray(this.tests);
@@ -448,7 +449,10 @@ export class CartComponent implements OnInit {
               /*user quantity check start here*/
         if(this.userVsQuant(element,this.sel_members[element.tid])){
           // swal("Your Quantity did not match with number of member selected in "+element.test_name,"warning");
-          swal("Alas!", "Your Quantity did not match with number of members selected in '"+element.test_name+"'","warning");
+          let tqnt=this.getQuantByTid(element.tid);
+          
+          swal("Alas!", "You have selected "+tqnt+" units for '"+element.test_name+"'\nyou can add a family member if you want to be tested together","warning");
+          // swal("Alas!", "Your Quantity did not match with number of members selected in '"+element.test_name+"'","warning");
           this.loading["data"]=false;
          
           // return "false";
@@ -456,37 +460,7 @@ export class CartComponent implements OnInit {
         }          
          });
         }
-        // if(this.pckgs!=null){
-        //     this.pckgs=this.cleanArray(this.pckgs);
-        //    // console.log(this.pckgs);
-        //     this.pckgs.forEach(element => {
-        //       //console.log(this.sel_members[element.tid]['uid']);
-        //      if(this.sel_members[element.id]['uid']===undefined){
-        //        this.finalPostList['uid_'+this.user.uid]=[];
-        //        this.finalPostList['uid_'+this.user.uid].push(element.id);
-        //      }else{
-               
-        //        if(this.finalPostList['uid_'+this.sel_members[element.id]['uid']]==undefined){
-        //          this.finalPostList['uid_'+this.sel_members[element.id]['uid']]=[];
-        //         this.finalPostList['uid_'+this.sel_members[element.id]['uid']].tests=[];
-        //         this.finalPostList['uid_'+this.sel_members[element.id]['uid']].tests.push(element.id);
-        //        }else{
-        //          this.finalPostList['uid_'+this.sel_members[element.id]['uid']].tests.push(element.id);
-        //        }
-               
-        //      }
-                       
-        //  });
-        // }
-        
-       
-      
-  
-      // this._api.POST('GetFamilyMembers', {TokenNo: token,'user_id':uid}).subscribe(data =>{
-      //   this.members=JSON.parse(data.json).data;
-       
-      //  });
-  
+     
        for(let key in this.finalPostList){
          let i=1;
        let fuid=key.split("_")[1];
@@ -597,13 +571,13 @@ export class CartComponent implements OnInit {
   finalizeOrder(fiorder_no:any){
     this._api.getToken().subscribe( 
       token => {
-    this._api.POST('FinalizeOrder', {TokenNo: token,'Referenceid':this.user.uid,'order_no':fiorder_no.join(),'payment_type':'0'}).subscribe(data =>{
+    this._api.POST('FinalizeOrder', {TokenNo: token,'Referenceid':this.user.uid,'order_no':fiorder_no.join(),'payment_type':this.paymentOption}).subscribe(data =>{
       let inv=JSON.parse(data.json).data;
-      console.log(inv);
+      //console.log(inv);
       sessionStorage.setItem('invoice', JSON.stringify(inv));
       localStorage.setItem('invoice', JSON.stringify(inv));
-      localStorage.setItem('tempTotal', JSON.stringify(this.tempTotal));
-      
+      localStorage.setItem('tempTotal', JSON.stringify(this.MPGprice));
+      // debugger;
       console.log("order finalized");
 
   //    console.log(inv);
@@ -639,6 +613,7 @@ export class CartComponent implements OnInit {
      
       if(element.tid==tid){
         a= element.test_finalpr;
+        
       } 
     });
     //console.log("here",this.pckgs);
@@ -651,7 +626,7 @@ export class CartComponent implements OnInit {
        });
     }
     
-    
+    this.MPGprice=this.MPGprice+(this.getQuantByTid(tid)*a);
     this.tempTotal=this.tempTotal+a;
     return a;
   }
@@ -835,7 +810,7 @@ export class CartComponent implements OnInit {
             alert("you have selected more family members than your quantity \nWe are adding up");
             
             this.bookComponent.getAddTestCart(this.getTestBytid(tid));
-            this.getLocStorage();
+           // this.getLocStorage();
             this.sel_members[tid].push(item);
             
           }

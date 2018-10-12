@@ -1,8 +1,8 @@
 
 <div class="content" style="min-height:800px;">
-    
+    <div class="tenet-loader" *ngIf="loading['data']" ><img src="./assets/images/monogram.svg"  /></div>
     <div class="container">
-       <div class="tenet-loader" *ngIf="loading['data']" ><img src="./assets/images/monogram.svg"  /></div>
+       
 
       <div class="row" style="">
           <div  id="add_family" class="modal theme_modal" role="dialog">
@@ -323,7 +323,7 @@
               <input type="radio" name="paymentOption"  value="1" (click)="mypayotp('1')" checked="checked"/> Pay Online
             </div>
             <div class="col-md-4 text-right">
-                <input type="radio" name="paymentOption" value="2" (click)="mypayotp('2')"/> Cash at Examination/Sample Colletion
+                <input type="radio" name="paymentOption" value="2" (click)="mypayotp('3')"/> Cash at Examination/Sample Colletion
               </div>
              </div>
              <div class="row" style="padding:20px 0;">
@@ -336,7 +336,8 @@
                   </div> --><!-- /input-group -->
                 </div>
                 <div class="col-md-8 text-right" style="padding-right: 0px;">
-                  <button class="btn btn-brand" (click)="checkOut()">CONFIRM BOOKING</button>
+                  <button *ngIf="paymentOption==3" class="btn btn-brand" (click)="checkOut()">CONFIRM BOOKING</button>
+                  <button *ngIf="paymentOption==1" class="btn btn-brand" (click)="checkOut()">PROCEED TO PAY</button>
                 </div>
                  </div>
           </div>

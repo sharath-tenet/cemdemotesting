@@ -43,6 +43,7 @@ export const router:Routes=[
     {path:'cart',component : CartComponent},
     {path:'login',component : LoginComponent},
     {path:'slots',component : SlotsComponent},
+    {path:'payment/:token',component : PaymentComponent},
     {path:'payment',component : PaymentComponent},
     {path:'invoice',component : InvoiceComponent},
     {path:'account/:any',component : AccountComponent},

@@ -20,7 +20,6 @@ export class OurPackagesComponent implements OnInit {
   curl: string;
   event: string;
   ser_string: any;
-
   //@ViewChild(myChildComponent)
   //private myChild: BookComponent;
 
@@ -47,7 +46,7 @@ export class OurPackagesComponent implements OnInit {
     this.ser_string=this.ser_string.replace("_,__",")"); 
     var re=/_/gi;
     this.ser_string=this.ser_string.replace(re," ");
-
+    this.ser_string=this.ser_string.replace("?slh?","/"); 
     this.ser_string=this.ser_string.replace(/^\s+|\s+$/g,""); 
     //console.log(this.ser_string);
     this.ser_string=new String(this.ser_string);
@@ -136,6 +135,7 @@ export class OurPackagesComponent implements OnInit {
         //this.testsList=[];
       }else{
         this._packages=[];
+        this.router.navigate(['./404']);
       }
       //console.log('packages',this._packages);
               if(this._packages.length > 0){

@@ -761,11 +761,12 @@ changePassword(form: NgForm,isValid: boolean){
         let resp=(JSON.parse(data.json).data);
        // console.log(resp);
         let k=[];
+        if(JSON.parse(localStorage.getItem('tests'))!== null){
+          k=JSON.parse(localStorage.getItem('tests'));
+          }
         if((resp!==null)&&(resp!==undefined)){
           if(resp.length > 0){
-            if(JSON.parse(localStorage.getItem('tests'))!== null){
-            k=JSON.parse(localStorage.getItem('tests'));
-            }
+            
             resp.forEach(element => {
               k.push(element);
             });
@@ -774,6 +775,9 @@ changePassword(form: NgForm,isValid: boolean){
             localStorage.setItem('tests',JSON.stringify(k));
             this.router.navigate(['./cart']);
           }
+        }else if(k.length>0){
+            localStorage.setItem('tests',JSON.stringify(k));
+            this.router.navigate(['./cart']);          
         }else{
           this.router.navigate(['./book']);
         }

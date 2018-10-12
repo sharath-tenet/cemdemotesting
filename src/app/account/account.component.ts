@@ -89,7 +89,7 @@ vBtn:boolean=false;
 uid:number;
 otherflag:boolean=false;
 othereditflag:boolean;
-
+mobileNumber:any;
 address1:any;
 editAddress:any;
 memId:any;
@@ -125,10 +125,17 @@ myOptions1: INgxMyDpOptions = {
    }
    setDate(){
     if(this.user.user_dob){
-      console.log(this.user.user_dob);
-      let tdate=this.user.user_dob.split("/");
+     // console.log(this.user.user_dob);
+      let tdate;
+      
+      if(this.user.user_dob!==null||this.user.user_dob!==''){
+        tdate=this.user.user_dob.split("/");
+      }else{
+        tdate=new Date();
+      }
+      
       this.model = { date: { year: tdate[2], month: tdate[1], day: tdate[0] } };//assign date to date-picker
-      console.log(this.model);
+      //console.log(this.model);
     }
    }
    getRecData(){
@@ -213,8 +220,15 @@ myOptions1: INgxMyDpOptions = {
           this.user.user_dob=this.getHumanDate(this.user.user_dob);
           this.setDate();
         }
-
-        this.user.user_name = this.user.user_name.split(' ');
+        console.log(this.user);
+        if(this.user.user_name!==null&&this.user.user_name!==''&&this.user.user_name!=='null'){
+          this.user.user_name = this.user.user_name.split(' ');
+        }else{
+          this.user.user_name=[];
+          this.user.user_name[0]="";
+          this.user.user_name[1]="";
+        }
+        
         this.user['firstname'] = this.user.user_name[0];
         this.user['lastname'] = this.user.user_name[1];
 
@@ -924,26 +938,30 @@ getAge(dateString:any) {
            if(mem.value.user_mobile){
                      mem.value.user_id = uid;
                      mem.value.user_name = mem.value.firstName+' '+mem.value.lastName;
-                            this._api.getToken().subscribe( 
+
+                           this._api.getToken().subscribe( 
                               token => {
-                               mem.value.TokenNo=token;
+                                console.log('saveFamily',mem.value);
+                                mem.value.TokenNo=token;
                                 mem.value.user_dob = mem.value.user_dob.formatted;
                                console.log('memVal',mem.value);
-                            this._api.POST('AddFamilyMembers', mem.value).subscribe(data =>{
+                                this._api.POST('AddFamilyMembers', mem.value).subscribe(data =>{
                                 let mems=JSON.parse(data.json).data;
                                  console.log('mems',mems);
+                                this.mobileNumber = mem.value.user_mobile;
+                                this.mobileNumber  = this.mobileNumber.replace(this.mobileNumber.substring(0,7),'XX');
 
                                 swal("<small>OTP SENT successfully</small>");
                                 mem.resetForm();
                                 
                                 this.add_family.nativeElement.click();
 
-                                this.otpModel.nativeElement.setAttribute("data-target", "#otp_model");
+                                 this.otpModel.nativeElement.setAttribute("data-target", "#otp_model");
                                  this.otpModel.nativeElement.setAttribute('type','button');
-                                this.otpModel.nativeElement.click();
+                                 this.otpModel.nativeElement.click();
                                  this.ph=false;
                                  this.memId = mems[0].id;
-                              
+                                 
                                
                                });
                               });
@@ -1597,6 +1615,15 @@ editFMAddress(uid:number,user_loc_id:number){
       return false;
     }
   
+  }
+  serviceDetails(tname,type){
+    if(type==0){
+      this._appComponent.select(tname,'package');
+    }else if(type==1){
+      this._appComponent.select(tname,'test');
+      
+    }
+
   }
 
   

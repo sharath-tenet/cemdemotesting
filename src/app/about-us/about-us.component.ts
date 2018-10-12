@@ -31,6 +31,7 @@ export class AboutUsComponent implements OnInit {
   tokenSet:boolean=false;
  _appComponent:any=[];
  queryString:any;
+ ser_string="";
   constructor(private _api:ApiService,private router :Router,_appComponent :AppComponent) {
   	    this._appComponent=_appComponent;
         this.tokenSet=this._appComponent.isLoggedIn;
@@ -104,17 +105,21 @@ export class AboutUsComponent implements OnInit {
         
         this.searchResult = [];
          this._packages=[];
+         var re=/ /gi;
+         let fk;
+         fk=this.filterKey.replace(re,"_"); 
+         fk=fk.replace("(","__,_"); 
+         fk=fk.replace(")","_,__"); 
         if(type=="test"){
-          var re=/ /gi;
-          
-          this.filterKey=this.filterKey.replace(re,"_"); 
-          this.filterKey=this.filterKey.replace("(","__,_"); 
-          this.filterKey=this.filterKey.replace(")","_,__"); 
-          window.location.href="./book/test-details/"+this.filterKey;
+     
+          window.location.href="./test-details/"+fk;
         }else if(type="package"){
-
+          window.location.href="./package-details/"+fk;
         }
        // this.filteredItems = [];
+    }
+    redir(url){
+      this.router.navigate(['./'+url]);
     }
 
 }

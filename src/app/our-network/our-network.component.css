@@ -51,4 +51,28 @@ padding: 0 3%;
     margin-top:30px; 
     margin-bottom:0px;
 }
-
+.serviceoffering_list_row  .heading .col-xs-6,.serviceoffering_list_row .heading .col-xs-2{
+	background-color:#eee;
+}
+.serviceoffering_list_row  .heading h3{
+	color:#f05b25;
+	margin:15px 0;
+}
+.serviceoffering_list_row .content_row .service_div .service_img_div{
+	width:50px;height:50px; float:left; margin-right:10px; margin-top:10px; 
+}
+.serviceoffering_list_row .content_row .service_div .service_name{
+	color: #f05b25;
+    font-size: 22px;
+    margin: 18px 5px;
+    display: block;
+    float: left;
+}
+.serviceoffering_list_row>.col-md-12 .row{
+	margin-bottom:10px;
+	display:flex;
+}
+.serviceoffering_list_row>.col-md-12 .row >div{
+	border:1px solid #000;
+	
+}

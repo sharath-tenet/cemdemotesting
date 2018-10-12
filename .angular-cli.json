@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "dist/browser",
       "assets": [
         "assets",
         "favicon.ico"
@@ -19,22 +19,43 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
-
+        "styles.css"
       ],
-      "scripts": [
-        "./assets/js/jquery.js",
-        "./assets/js/bootstrap.min.js",
-        "./assets/plugins/owl.carousel2/owl.carousel.min.js"
-        
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
-    }
+    },{
+      
+        "platform": "server",
+        "root": "src",
+  
+        "outDir": "dist/server",
+        "assets": [
+          "assets",
+          "favicon.ico"
+        ],
+        "index": "index.html",
+     
+        "main": "main.server.ts",
+  
+        "test": "test.ts",
+  
+        "tsconfig": "tsconfig.server.json",
+        "testTsconfig": "tsconfig.spec.json",
+        "prefix": "app",
+        "styles": [
+          "styles.css"
+        ],
+        "scripts": [],
+        "environmentSource": "environments/environment.ts",
+        "environments": {
+          "dev": "environments/environment.ts",
+          "prod": "environments/environment.prod.ts"
+        }
+      }
   ],
   "e2e": {
     "protractor": {

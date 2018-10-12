@@ -31,7 +31,7 @@ export class BookComponent implements OnInit {
                       ,"Complete Urine Examination (CUE), Spot Urine","Glucose Fasting (FBS),  Sodium Flouride Plasma","Glycosylated Hemoglobin (HbA1C), EDTA Whole Blood","Uric Acid, Serum","Thyroglobulin (Tg), Serum","Blood Urea Nitrogen (BUN), Serum","Prolactin, Serum","Prothrombin Time With INR, Sodium Citrate Whole Blood","HIV 1 & 2 Antibodies, Serum","Culture And Sensitivity (Aerobic), Urine"];
   test_code: any;
   addtovisible: string;
-  sortString: any = "Popularity";
+  sortString: any = "Featured";
   event: string = '';
   pa: number = 1;
   public config= {};
@@ -334,19 +334,17 @@ public loading = [];
         this.searchResult = [];
          //this._packagesSearchResult=[];
          this._packages1=[];
+         var re=/ /gi;
+         
+         this.filterKey=this.filterKey.replace(re,"_"); 
+         this.filterKey=this.filterKey.replace("(","__,_"); 
+         this.filterKey=this.filterKey.replace(")","_,__"); 
+         this.filterKey=this.filterKey.replace("/","?slh?"); 
         if(type=="test"){
-          var re=/ /gi;
           
-          this.filterKey=this.filterKey.replace(re,"_"); 
-          this.filterKey=this.filterKey.replace("(","__,_"); 
-          this.filterKey=this.filterKey.replace(")","_,__"); 
          window.location.href="./test-details/"+this.filterKey;
         }else if(type="package"){
-          var re=/ /gi;
-          
-          this.filterKey=this.filterKey.replace(re,"_"); 
-          this.filterKey=this.filterKey.replace("(","__,_"); 
-          this.filterKey=this.filterKey.replace(")","_,__"); 
+         
           let base_url="";
          if( this.ptype=="H"){
           base_url="package-details";
@@ -812,7 +810,7 @@ return false;
     
     this.test_type="";
     this.AlphaSearch="";
-    this.sortString="Popularity"; 
+    this.sortString="Featured"; 
     this.sort_order="1";
     
     this.filterKey="";
@@ -836,7 +834,7 @@ return false;
       if(data.status==1){
         let p=JSON.parse(data.json).data;
         p.forEach(element => {
-          if(element.package_price>0){
+          if(element.package_price>=0){ //this has to be removed when moving to live
             this._packages.push(element);
           }
         });

@@ -102,9 +102,10 @@ _packages:any=[];
       this.ser_string=this.ser_string.replace("_,__",")"); 
       var re=/_/gi;
       this.ser_string=this.ser_string.replace(re," ");
+      this.ser_string=this.ser_string.replace("?slh?","/"); 
 
       this.ser_string=this.ser_string.replace(/^\s+|\s+$/g,""); 
-      console.log(this.ser_string);
+     
       this.ser_string=new String(this.ser_string);
       this.test_id='';
     }else{
@@ -116,11 +117,18 @@ _packages:any=[];
     this._api.getToken().subscribe( 
       token => { 
     this._api.POST('GetTestDetails', {TokenNo: token,test_id:this.test_id,'test_name':this.ser_string}).subscribe(data =>{
-       this.testDetails=JSON.parse(data.json).data[0];
-       this.testDetails.report_avb=this.getHumanDate(this.testDetails.report_avb);
-       if(this.testDetails.faq){
-        this.testDetails.faq=this.strReplaceFaq(this.testDetails.faq);
-       }
+      if(JSON.parse(data.json).data!==undefined){
+        this.testDetails=JSON.parse(data.json).data[0];
+        
+          this.testDetails.report_avb=this.getHumanDate(this.testDetails.report_avb);
+          this.testDetails.parameters=this.splitParams(this.testDetails.parameters);
+          if(this.testDetails.faq){
+           this.testDetails.faq=this.strReplaceFaq(this.testDetails.faq);
+          }
+      }else{
+        this.route.navigate(['./404']);
+      }
+     
        
        this.loading['testdetails']=false;
   
@@ -210,6 +218,7 @@ if(stest){
     this._api.POST('GetTestDetails', {token: token,test_id:data}).subscribe(data =>{
       
        this.testDetails=JSON.parse(data.json).data;
+       this.testDetails.parameters=this.splitParams(this.testDetails.parameters);
        this.testDetails.report_avb=this.getHumanDate(this.testDetails.report_avb);
       });
     });
@@ -262,15 +271,17 @@ if(stest){
         
         this.searchResult = [];
          this._packages=[];
+         var re=/ /gi;
+         let fk;
+         fk=this.filterKey.replace(re,"_"); 
+         fk=fk.replace("(","__,_"); 
+         fk=fk.replace(")","_,__");
+         fk=fk.replace("/","?slh?"); 
         if(type=="test"){
-          var re=/ /gi;
-          
-          this.filterKey=this.filterKey.replace(re,"_"); 
-          this.filterKey=this.filterKey.replace("(","__,_"); 
-          this.filterKey=this.filterKey.replace(")","_,__"); 
-          window.location.href="./book/test-details/"+this.filterKey;
+         
+          window.location.href="./test-details/"+fk;
         }else if(type="package"){
-
+          window.location.href="./package-details/"+fk;
         }
        // this.filteredItems = [];
     }
@@ -284,5 +295,18 @@ if(stest){
      testQuantMinus(tid){
       this._appComponent.quantMinusByIndex(tid);
        }
+    noObjHide(val:any){
+      let a=false;
+      if(val===null||val==''||val=='undefined'){
+        a=false;
+      }else if(val.length>0){
+        a=true;
+      }
+      return a;
+
+    }
+    splitParams(val){
+      return val.split("*");
+    }
 
 }

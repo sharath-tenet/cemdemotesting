@@ -1,5 +1,5 @@
 import { Component, OnInit,ElementRef,ViewChild,AfterViewInit } from '@angular/core';
-import {Router} from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-payment',
@@ -7,6 +7,7 @@ import {Router} from '@angular/router'
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  transtoken: any;
   paymentOpt: string;
 
   isTokenSet: any;
@@ -18,12 +19,14 @@ export class PaymentComponent implements OnInit {
   channel_id:any;
   txn_amount:any;
   @ViewChild('payform') payform: ElementRef;
-  constructor(private router:Router) { 
+  constructor(private router:Router,private rou:ActivatedRoute) { 
     this.tokenCheck();
     this.testCheck();
-    if(this.paymentOpt=='2'){
+    if(this.paymentOpt=='3'){
       this.demoSuccess();
     }
+    this.transtoken=this.rou.snapshot.paramMap.get('token');
+    console.log(this.transtoken);
      
     
   }

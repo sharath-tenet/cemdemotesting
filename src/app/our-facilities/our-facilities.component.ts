@@ -25,9 +25,14 @@ export class OurFacilitiesComponent implements OnInit {
   searchResult = [];
   _packages:any=[];
   public filterKey:any;
+  mpckgshow=true;
+  ser_string="";
 
   tokenSet:boolean=false;
   public _appComponent:any;
+  _packagesSearchResult:any=[];
+  top_tests:string[]=["Complete Blood Picture (CBP), EDTA Whole Blood","Lipid Profile, Serum","Liver Function Test (LFT), Serum","Thyroid Antibodies (TG & TPO), Serum","Thyroid Profile (T3,T4,TSH), Serum","1, 25-Dihydroxy Vitamin D, Serum","25 - Hydroxy Vitamin D, Serum","Urea, Serum","Creatinine, Serum","Triple Marker, Serum","Magnesium, Serum"
+  ,"Complete Urine Examination (CUE), Spot Urine","Glucose Fasting (FBS),  Sodium Flouride Plasma","Glycosylated Hemoglobin (HbA1C), EDTA Whole Blood","Uric Acid, Serum","Thyroglobulin (Tg), Serum","Blood Urea Nitrogen (BUN), Serum","Prolactin, Serum","Prothrombin Time With INR, Sodium Citrate Whole Blood","HIV 1 & 2 Antibodies, Serum","Culture And Sensitivity (Aerobic), Urine"];
 
   constructor(_bookComponent :BookComponent,_api :ApiService,private router :Router,_appComponent :AppComponent) {
       this._appComponent=_appComponent;
@@ -44,7 +49,7 @@ export class OurFacilitiesComponent implements OnInit {
         if(term.length >=3){
           this._api.getToken().subscribe( 
             token => {
-        this._api.POST('GetServices', {TokenNo:token,pincode:'' ,test_name:data,test_code:'',test_type:'',condition_id:'',speciality_id:'',sort_by:'',sort_order:'',AlphaSearch:'',user_id:'',is_home_collection:""}).subscribe(data =>{
+        this._api.POST('GetServices', {TokenNo:token,pincode:'' ,test_name:data,test_code:'',test_type:'',condition_id:'',speciality_id:'',sort_by:'',sort_order:'',AlphaSearch:'',user_id:'',is_home_collection:"",organ_id:""}).subscribe(data =>{
                         if(data.status==1){
                           this.searchResult=JSON.parse(data.json).data;
                         }else{
@@ -55,12 +60,12 @@ export class OurFacilitiesComponent implements OnInit {
                       });
                        this._api.getToken().subscribe( 
                         token => {
-                  this._api.POST('GetPackages',{TokenNo:token,"pincode":"","package_name":data,"package_code":"","sort_by":"","sort_order":"","alphaSearch":""}).subscribe(data =>{
+                  this._api.POST('GetPackages',{TokenNo:token,"pincode":"","package_name":data,"package_code":"","sort_by":"","sort_order":"","alphaSearch":"",organ_id:""}).subscribe(data =>{
                   if(data.status==1){
-                    this._packages=JSON.parse(data.json).data;
+                    this._packagesSearchResult=JSON.parse(data.json).data;
                     //this.testsList=[];
                   }else{
-                    this._packages=[];
+                    this._packagesSearchResult=[];
                   }
                 
                });
@@ -75,30 +80,25 @@ export class OurFacilitiesComponent implements OnInit {
 	  }
 
     
-    //SELCTION ITEM METHOD.
-    select(item){
-        this.filterKey = item;
-        this.searchResult = [];
-        this._packages=[];
-       // this.filteredItems = [];
-    }
+    // //SELCTION ITEM METHOD.
+    // select(item){
+    //     this.filterKey = item;
+    //     this.searchResult = [];
+    //     this._packages=[];
+    //    // this.filteredItems = [];
+    // }
 
    	search(srt_by:any,searchString:any){
 	 //this._bookComponent.serClick(srt_by,strng);
 	  this.router.navigate(['./book', {searchString:searchString}]);
 	}
 
-    getBookAnAppointment(){
-    this.router.navigate(['./book']);
-  }
+  
+  //   searchBasedOnString(str:any){
+  //   this.router.navigate(['./book', {searchString:str}]);
+  // }
 
-    searchBasedOnString(str:any){
-    this.router.navigate(['./book', {searchString:str}]);
-  }
-
-   redir(val:string){
-        window.location.href="./"+val;
-      }
+  
 
             loginSubmit(form: NgForm,isValid: boolean){
       //console.log(form.value, isValid);
@@ -157,6 +157,55 @@ export class OurFacilitiesComponent implements OnInit {
               console.log("");
           }
     
+      }
+      getPopularTests(strng){
+        if(strng===''){
+          return this.top_tests;
+        }else{
+          return [];
+        }
+        
+      }
+  
+      searchBasedOnString(str:any){
+      
+      if(str != undefined){
+          this.router.navigate(['./book', {searchString:str}]);
+        }else{
+          return false;
+        }
+  
+     }
+  
+      select(item,type:any){
+          this.filterKey = new String(item);
+          
+          this.searchResult = [];
+           this._packages=[];
+           let fk;
+           var re=/ /gi;
+           
+           fk=this.filterKey.replace(re,"_"); 
+           fk=fk.replace("(","__,_"); 
+           fk=fk.replace(")","_,__"); 
+          if(type=="test"){
+           
+            window.location.href="./book/test-details/"+fk;
+          }else if(type="package"){
+            window.location.href="./package-details/"+fk;
+          }
+         // this.filteredItems = [];
+      }
+      //book a test and status blocks
+      getBookAnAppointment(){
+        
+          this.router.navigate(['./book']);
+       }
+       redir(val:string){
+        window.location.href="./"+val;
+      }
+      getOTP(){
+        this._appComponent.toLogin();
       }
 
 }

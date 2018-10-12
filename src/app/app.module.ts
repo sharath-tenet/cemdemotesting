@@ -23,7 +23,7 @@ import { DatePipe } from '@angular/common';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //ng2-idle
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+// import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 import { MomentModule } from 'angular2-moment';
 
@@ -50,6 +50,7 @@ import { RefundCancelComponent } from './refund-cancel/refund-cancel.component';
 // import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { TncComponent } from './tnc/tnc.component';
 import { BillViewComponent } from './bill-view/bill-view.component';
+import {NotificationsModule, NotificationsService} from 'angular4-notify';
 
 
 
@@ -97,7 +98,7 @@ export const firebaseconfig = {
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId:'cemsdemo'}),
     routes,
     HttpModule,
     FormsModule,
@@ -110,6 +111,7 @@ export const firebaseconfig = {
   //  AngularFireAuthModule,
     NgxMyDatePickerModule.forRoot(),
    ScrollToModule.forRoot(),
+   NotificationsModule,
     LoadingModule.forRoot({
       animationType: ANIMATION_TYPES.threeBounce,
       backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
@@ -118,9 +120,9 @@ export const firebaseconfig = {
       secondaryColour: '#f05b25', 
       tertiaryColour: '#f05b25'
   }),
-    NgIdleKeepaliveModule.forRoot()
+   // NgIdleKeepaliveModule.forRoot()
   ],
-  providers: [HomeComponent,ApiService,AppComponent,LoginComponent,CookieService,httpInterceptorProviders,HttpClient,DatePipe],
+  providers: [HomeComponent,ApiService,AppComponent,LoginComponent,CookieService,httpInterceptorProviders,HttpClient,DatePipe,NotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

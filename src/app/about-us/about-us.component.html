@@ -1,22 +1,7 @@
-<div class="container">
+<!--<div class="content">
+  <div class="container">
     <div class="row" style="">
-          <!-- <div class="col-md-12">
-      <div class="col-md-1"></div>
-      <div class="col-md-10 text-center">
-        <div class="form-group" style="">
-          <div class="input-group search_input-group">
-            <input type="text" class="form-control input-lg" placeholder="Search for your nearest tenet center, test or service." aria-describedby="basic-addon2" value="">
-            <span class="input-group-addon" id="basic-addon2" style="background-color:#fff; border:0px;"> 
-              <span><i class="far fa-circle" style="color:#f05b25; font-size: 30px;margin-top: -7px;"></i></span>
-              <div style="font-size: 14px;margin-top: -22px; color:#f05b25"><i class="fas fa-search"></i></div>
-                
-            </span>
-          </div>
 
-        </div>
-      </div>
-        
-          </div> -->
     <div class="col-md-12">
       <div>
         <h2 class="bigtitle"><img src="./assets/images/iconimages/teneticon.png" class="pull-left" style="margin: 0px 01px 01px 0px;    width: 40px !important; ">ITS GOOD TO KNOW</h2>
@@ -113,3 +98,129 @@
       
     
 </div>
+</div>-->
+<div class="content" style="min-height:800px;">
+  <div class="container">
+    <div class="row" style="">
+     
+        <div class="col-md-12 text-center">
+            <div class="form-group" style="margin: 30px 100px;">
+  
+ 
+                  <div class="input-group search_input-group">
+                    <input #searchString type="text" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" placeholder="Search for Pathology Tests, Scans, MRI, CT etc." aria-describedby="basic-addon2" aria-expanded="true" [formControl]="searchTerm" (keyup.enter)="searchBasedOnString(searchTerm.value)" [(ngModel)]=filterKey value="{{ser_string}}">
+                    <span class="" style="color: #f05b25;    position: absolute;    top: 12px;    right: 60px;    z-index: 2;">X Clear</span>
+                  <div class="dropdown-menu search_dropdown" style="width:100%;max-height:250px;overflow-y:auto;    z-index: 1999;">
+                      <ul class="search_ul" >
+                             
+                          <li class="heading" *ngIf="searchResult.length > 0"><i class="fa fa-history"></i> Tests Related to {{searchTerm.value}}</li>
+                          <li *ngFor="let item of searchResult"><a (click)="select(item.test_name,'test')">{{item.test_name}}</a></li>
+                          
+                          <li class="heading" *ngIf="((_packagesSearchResult.length > 0)&&(mpckgshow===true))"><i class="fa fa-history"></i> Packages Related to {{searchTerm.value}}</li>
+                          <li *ngFor="let item of _packagesSearchResult"><a (click)="select(item.package_name,'package')">{{item.package_name}}</a></li>
+
+                          <li class="heading" *ngIf="((_packagesSearchResult.length ==0) && (searchResult.length==0) &&(searchString.value===''))">Popular Tests</li>
+                          <li *ngFor="let test of getPopularTests(searchString.value)" (click)="select(test,'test')">{{test}}</li>
+
+                      </ul>
+                    </div>
+
+                    <span class="input-group-addon" id="basic-addon2" style="background-color:#fff; border:0px;"  (click)="searchBasedOnString(searchTerm.value)"> 
+                          <span><i class="fa fa-circle" style="color:#EEEEED ; font-size: 50px;margin-top: -7px;"></i></span>
+                          <div style="font-size: 35px;margin-top: -42px; color:#f05b25"><i class="fa fa-search"></i></div>
+                            
+                    </span>
+                  </div>
+
+              </div>
+          </div>
+            
+     
+    <div class="col-md-12">
+      <div>
+        <h2 class="bigtitle"><img src="./assets/images/iconimages/teneticon.png" class="pull-left" style="margin: 0px 01px 01px 0px;    width: 40px !important; ">ITS GOOD TO KNOW</h2>
+      </div>
+      <div>
+        <h4>WHO ARE WE?</h4>
+        <p>Centre For Excellence In Medical Services Private Limited (CEMS) is a Company incorporated on Jan 20, 2017 with an object of establishing high quality Diagnostic Laboratories across India under the Brand Name of “Tenet Diagnostics”.</p>
+        
+        <h4>PURPOSE</h4>
+        <p>Tenet Diagnostics has identified and intends to fulfil the unmet needs of the market by focusing on Quality, Reach, Technology &amp; Logistics and most of all. Customer Experience.</p>
+        <h4>QUALITY</h4>
+        <p>Tenet Diagnostics is on the path of building partnerships with world class established and emerging diagnostics equipment providers, Academic/ Research Institutes, Biotech and Healthcare firms. These partnerships will help the business to stay at the forefront of diagnostic breakthroughs and in adopting them to create quality excellence. These would be backed by getting accredited from quality agencies like NABL &amp; CAP.</p>		
+        
+        
+      </div>
+      
+      
+      
+    </div>
+    </div>
+    <div class="row">
+  
+      
+      <div class="col-md-5">
+        <img src="./assets/images/iconimages/Doctor_Icon.png" width="100%">
+      </div>
+      <div class="col-md-7">
+          <h4><strong>WHAT DO WE STAND FOR?</strong></h4>
+          <p>Tenet Diagnostic vertical is envisioned to be a world class diagnostic chain focused on providing high quality diagnostic services to its customers. To establish a state of the art comprehensive diagnostics care unit which will provide services that can cater to every section of the community .</p>
+          <h5 class="titles" style="font-weight:600">RESEARCH AND DEVELOPMENT</h5>
+          <p>create an appropriate platform for R&amp;D where innovative products can be developed which will aid in precise diagnosis of most common healthcare dilemmas.</p>
+          <h5 class="titles" style="font-weight:600">EDUCATION AND TRAINING</h5>
+          <p>To provide adequate training &amp; development to radiologists, technologists, Engineers in collaboration with prestigious educational institutions and to leverage the abundant, qualified manpower available in the country and to generate gainful employment.</p>
+        
+          <h5 class="titles" style="font-weight:600">QUALITY CLINICAL IMAGING</h5>
+          <p>Implementing the cutting edge technologies in diagnosing very early stage diseases and to accelerate imaging with a high throughput.</p>
+          <h5 class="titles" style="font-weight:600">QUALITY LABORATORY SERVICES</h5>
+          <p>Incorporating contemporary best practices in laboratory management with consistent quality and innovation enabling precise diagnosis of some of the most complex diseases.</p>
+          <h5 class="titles" style="font-weight:600">CLINICAL TRIALS</h5>
+          <p>Collaboration with international companies to perform clinical trials. Consultancy services for healthy life style with conventional and non-conventional lifestyle modification practices.</p>
+          
+        
+          
+          
+          
+          
+      </div>
+      
+    
+      
+        
+    
+  </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+          
+        <hr>
+        <div class="row">
+        <div class="col-md-2">
+            
+          </div>
+          <div class="col-md-4">
+            <div class="image_holder">
+              <img src="./assets/images/iconimages/aboutus/a2.png" width="65%">
+            </div>
+            <div class="info text-center">
+              <h4 class="text-center text-brandcolor" style="cursor:pointer;" (click)="redir('our-facilities')">CHECK OUT OUR FACILITIES</h4>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="image_holder">
+              <img src="./assets/images/iconimages/aboutus/a1.png" width="65%">
+            </div>
+            <div class="info text-center">
+              <h4 class="text-center text-brandcolor" style="cursor:pointer;" (click)="redir('network')">EXPLORE OUR NETWORK</h4>
+            </div>
+          </div>
+      
+        </div>
+      
+      
+      </div>
+    </div>
+      
+    
+</div>
+  
+</div>  

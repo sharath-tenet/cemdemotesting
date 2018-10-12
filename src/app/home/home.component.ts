@@ -7,6 +7,7 @@ import {NgForm, FormControl,Validators} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 import { BookComponent } from "../book/book.component";
+import {NotificationsService} from 'angular4-notify';
 
 //import { WindowService } from '../common/window.service';
 //import * as firebase from 'angularfire2';
@@ -30,6 +31,8 @@ export class HomeComponent implements OnInit {
 
     @ViewChild('someVar') inputEl:ElementRef;
     @ViewChild('save1') save1:ElementRef;
+     @ViewChild('searchString') searchString1:ElementRef;
+
     public uid:number;
 
   ptype: string="H";
@@ -57,7 +60,7 @@ export class HomeComponent implements OnInit {
   latitude:any;
   longitude:any;
   queryString:any;
-  images:string[]=["sliders/slider_image.png","sliders/slider_image.png","sliders/slider_image.png","sliders/slider_image.png","sliders/slider_image.png","sliders/slider_image.png"]
+  images:string[]=["sliders/slider_image.png","sliders/Banners-01.jpg","sliders/Banners-02.jpg","sliders/Banners-03.jpg","sliders/Banners-04.jpg","sliders/Banners-05.jpg","sliders/Banners-06.jpg","sliders/Banners-07.jpg","sliders/Banners-08.jpg"]
   images1:string[]=["iconimages/homepage_presn_slider/1.png"];
   top_tests:string[]=["Complete Blood Picture (CBP), EDTA Whole Blood","Lipid Profile, Serum","Liver Function Test (LFT), Serum","Thyroid Antibodies (TG & TPO), Serum","Thyroid Profile (T3,T4,TSH), Serum","1, 25-Dihydroxy Vitamin D, Serum","25 - Hydroxy Vitamin D, Serum","Urea, Serum","Creatinine, Serum","Triple Marker, Serum","Magnesium, Serum"
                       ,"Complete Urine Examination (CUE), Spot Urine","Glucose Fasting (FBS),  Sodium Flouride Plasma","Glycosylated Hemoglobin (HbA1C), EDTA Whole Blood","Uric Acid, Serum","Thyroglobulin (Tg), Serum","Blood Urea Nitrogen (BUN), Serum","Prolactin, Serum","Prothrombin Time With INR, Sodium Citrate Whole Blood","HIV 1 & 2 Antibodies, Serum","Culture And Sensitivity (Aerobic), Urine"];
@@ -76,7 +79,7 @@ export class HomeComponent implements OnInit {
   mobilenoExists:boolean=false;
 
 
-   constructor(private _api:ApiService,private router :Router,_appComponent :AppComponent) { 
+   constructor(private _api:ApiService,private router :Router,_appComponent :AppComponent,private el: ElementRef) { 
       // console.log("Get Banners here!");
        //this._api=_api;
        this._appComponent=_appComponent;
@@ -94,6 +97,7 @@ export class HomeComponent implements OnInit {
         }
        
         if(term.length >=3){
+        //  this.ns.addWarning('this is a warning message');
           this._api.getToken().subscribe( 
             token => { 
         this._api.POST('GetServices', {TokenNo: token,pincode:'' ,test_name:data,test_code:'',test_type:'',condition_id:'',speciality_id:'',sort_by:'',sort_order:'',AlphaSearch:'',user_id:'',is_home_collection:"",organ_id:""}).subscribe(data =>{
@@ -159,7 +163,9 @@ export class HomeComponent implements OnInit {
     this.getlocation();
     // console.log(this.geolocationPosition);
     //get address by lat lang
+   
     
+    //this.ns.addWarning('This is a test message');
     localStorage.setItem('showCart',"false");
     this.getPackages();
     window.scrollTo(0, 0);
@@ -175,6 +181,13 @@ export class HomeComponent implements OnInit {
    let res={"latitude":lat,"longitude":long}
    return res;
   }
+
+   getOTP(frm,vald){
+
+   //console.log("form",form.value);
+   this._appComponent.toLogin();
+  }
+ 
 
    autoTab(event:any){
       if ( event.target.value.length >= event.target.maxLength && event.target.nextElementSibling ) 
@@ -203,7 +216,7 @@ export class HomeComponent implements OnInit {
      this.router.navigate(['./book']);
   }
   searchBasedOnString(str:any){
-
+    
      if(str != undefined){
         this.router.navigate(['./book', {searchString:str}]);
       }else{
@@ -501,26 +514,24 @@ export class HomeComponent implements OnInit {
       this.searchResult = [];
        //this._packagesSearchResult=[];
        this._packages1=[];
+       var re=/ /gi;
+       let fk;
+       fk=this.filterKey.replace(re,"_"); 
+       fk=fk.replace("(","__,_"); 
+       fk=fk.replace(")","_,__");
+       fk=fk.replace("/","?slh?"); 
       if(type=="test"){
-        var re=/ /gi;
-        
-        this.filterKey=this.filterKey.replace(re,"_"); 
-        this.filterKey=this.filterKey.replace("(","__,_"); 
-        this.filterKey=this.filterKey.replace(")","_,__"); 
-       window.location.href="./test-details/"+this.filterKey;
+      
+       window.location.href="./test-details/"+fk;
       }else if(type="package"){
-        var re=/ /gi;
         
-        this.filterKey=this.filterKey.replace(re,"_"); 
-        this.filterKey=this.filterKey.replace("(","__,_"); 
-        this.filterKey=this.filterKey.replace(")","_,__"); 
         let base_url="";
        if( this.ptype=="H"){
         base_url="package-details";
        }else if(this.ptype=="P"){
         base_url="profile-details";
        }
-       window.location.href="./"+base_url+"/"+this.filterKey; 
+       window.location.href="./"+base_url+"/"+fk; 
 
       }
      // this.filteredItems = [];
@@ -532,15 +543,12 @@ export class HomeComponent implements OnInit {
   console.log('formValues',form.value);
 console.log(isValid);
 if(isValid){
-
-
     this._api.getToken().subscribe( 
       token => {
           let data ={
             'TokenNo':token,
             'mobile':form.value.Mobile
           }
-
           this._api.POST('GetForgotPassword', data).subscribe(data =>{
              let response=(JSON.parse(data.json).data);
                  console.log("response",response);
@@ -580,7 +588,7 @@ if(isValid){
   }
 
   resendOTP(mobile:number){
-    alert(mobile);
+    console.log(mobile);
 
     this._api.getToken().subscribe( 
       token => {
@@ -659,6 +667,17 @@ if(isValid){
           // console.log('bool',isValid);
            //console.log('upbotp',data);
  }
+ getSerBarPos(){
+
+  const scrollPosition = window.pageYOffset
+  if(scrollPosition>100){
+return false;
+  }else{
+    return true;
+  }
+   
+ }
+
 
   
 }

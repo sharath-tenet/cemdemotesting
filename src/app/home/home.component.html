@@ -10,13 +10,155 @@
         <div class="row">
             <div class="col-md-12" style="position:relative">
                 <div class="slider_images">
-                    <owl-carousel #maincaro [options]="{items: 1, dots: false, navigation: true ,loop:true,autoplay:true,autoplayTimeout:2000}" [items]="images"   [carouselClasses]="['owl-theme', 'row', 'sliding','slider_images']">
-                            <div class="item" *ngFor="let image of images;let i = index">
+                    <owl-carousel #maincaro [options]="{items: 1, dots: false, navigation: true ,loop:true,autoplay:true,autoplayTimeout:3000}" [items]="images"   [carouselClasses]="['owl-theme', 'row', 'sliding','slider_images']">
+                            <!-- <div class="item" *ngFor="let image of images;let i = index">
                                 <div class="thumbnail-image" >
                                   <img src="./assets/images/{{image}}"/>
                                 </div>
                                 
+                            </div> -->
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%;height:400px;">
+                                    <div class="container">
+                                        <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                            <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                                <img src="./assets/images/sliders/partials/siemens_mri_magnetom-skyra_image-1-bc.png" width="100%">
+                                            </div>
+                                            <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                                <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                    <h2><strong>360 DEGREE DIAGNOSTICS</strong></h2>
+                                                    <h4 class="text-brandcolor"><strong>With cutting-edge technology like 3 Tesla</strong></h4>
+                                                    <button class="btn btn-sm btn-brand" style="margin-top:30px;" (click)="redir('book')">BOOK TEST</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%;">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>QUICK AND EASY DIAGNOSTICS FOR THE CLEAREST PICTURE OF YOUR HEALTH</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>Simple to take tests with easy to understand reports.</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">BOOK TEST</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM192715.png" width="100%">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%;">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM682511.png" width="100%">
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>EASY-TO-TAKE TESTS FOR A BETTER UNDERSRANDING</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>A comprehensive range of Speciality test to make your health a priority.</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">BOOK TEST</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%;">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM682525.png" width="100%">
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>IT'S GOOD TO KNOW WE LOOK AFTER EVERYONE</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>An exhaustive range of health packages for all age groups.</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">BOOK TEST</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
+                            <div class="item " style="width: 1349px; margin-right: 0px;"><div style="width:100%;">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM671629.png" width="100%">
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>IT'S GOOD TO KNOW YOUR HEALTH IS IN THE BEST HANDS</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>Experts in Radiology and Pathology</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">BOOK TEST</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%;">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM28256.png" width="100%">
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>CONVENIENT TESTS FOR EVERY CONDITION</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>Health packages for changing lifestyles</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">BOOK TEST</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM666845.png" width="100%">
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>QUICK, VISUAL REPORTS ACCESSIBLE FROM ANYWHERE</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>Book your test and get the results online.</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">VIEW REPORT</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
+                            <div class="item" style="width: 1349px; margin-right: 0px;"><div style="width:100%;">
+                                <div class="container">
+                                    <div class="row" style="display: flex;    flex-wrap: wrap;">
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <img src="./assets/images/sliders/partials/SM682545.png" width="100%">
+                                        </div>
+                                        <div class="col-md-6" style="-webkit-box-flex: 0;    -ms-flex: 0 0 50%;    flex: 0 0 50%;    max-width: 50%;">
+                                            <div style="   width:100%;    position: absolute;    top: 37%;    left: 50%;        transform: translate(-50%, -50%);">
+                                                <h2><strong>YOUR COMFORT IS OUR PRIORITY</strong></h2>
+                                                <h4 class="text-brandcolor"><strong>Our doctors, technicians, radialogists and staff ensure a stress-free experience for you</strong></h4>
+                                                <a href="profile.php" class="btn btn-brand" style="margin-top:30px;">BOOK TEST</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div></div>
                             
                    </owl-carousel>
                     
@@ -47,7 +189,7 @@
        <div class="row" style="margin-top:30px; margin-bottom:0px;">
             <div class="col-md-12 text-center">
                 <div class="form-group" style="margin: 40px 100px;">
-                    <div class="input-group search_input-group">
+                    <div class="input-group search_input-group" [ngClass]="getSerBarPos()? 'dropup' :''">
                       <input #searchString type="text" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" placeholder="Search for Pathology Tests, Scans, MRI, CT etc." aria-describedby="basic-addon2" aria-expanded="true" [formControl]="searchTerm" (keyup.enter)="searchBasedOnString(searchTerm.value)" [(ngModel)]=filterKey>
                     <div class="dropdown-menu search_dropdown" style="width:100%;max-height:250px;overflow-y:auto;    z-index: 1999;">
                         <ul class="search_ul" >
@@ -97,9 +239,57 @@
             <div class="col-md-6 text-center left-border-brandcolor-light-2px" style="padding:20px">
                     <!-- tokenSet -->
                 <span *ngIf="tokenSet"><button class="btn btn-brand btn-lg home_btn" (click)="redir('./account/order-history')" style="text-align:center;height: 70px;padding: 0 50px;">Check Report <br> Status</button></span>  
-                <span *ngIf="!tokenSet"><button class="btn btn-brand btn-lg home_btn" data-toggle="modal" data-target="#book_modal" data-backdrop="false" style="text-align:center;height: 70px;padding: 0 50px;">Check Report <br> Status</button></span>  
+                <span *ngIf="!tokenSet">
+                	<!-- <button class="btn btn-brand btn-lg home_btn" data-toggle="modal" data-target="#book_modal" data-backdrop="false" style="text-align:center;height: 70px;padding: 0 50px;">Check Report <br> Status</button> -->
+                	<button class="btn btn-brand btn-lg home_btn" (click)="getOTP()" style="text-align:center;height: 70px;padding: 0 50px;">Check Report <br> Status</button> 
+                </span>  
+                
             </div>
      </div>
+     <div id="login_modal1" class="modal theme_modal in" role="dialog" >
+          <div class="modal-dialog">
+            <!-- login content-->
+          <form #lf1="ngForm" novalidate (ngSubmit)="getOTP(lf1,lf1.valid)">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="btn modal_close_btn" data-dismiss="modal" #login_modal1 (click)="reset(lf1)">×</button>
+                <h4 class="modal-title"></h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-12">
+                      <div>
+                      <h4 class="titles" style="font-weight:600">LOGIN</h4>
+                      </div>
+                      <div class="form-group">
+                                <!--   <input class="form-control theme" placeholder="Enter your Mobile Number" name="
+                                  Mobile" ngModel required #Mobile="ngModel"> -->
+                                  <input class="form-control theme" ngModel required name="Mobile1" #Mobile1="ngModel" placeholder="Enter your Mobile Number" pattern="[0-9]*" minlength="10" maxlength="10"/>
+                                   <div style="color:#fc6107" *ngIf="Mobile1?.errors && (Mobile1.dirty || Mobile1.touched || lf.submitted )">
+                                                        <p *ngIf="Mobile1?.errors.required">
+                                                            The Mobile Number is required
+                                                        </p>
+                                                        <p *ngIf="Mobile1?.errors.minlength">
+                                                              Mobile number should be 10 digit
+                                                        </p>
+                                                        <p *ngIf="Mobile1?.errors.pattern">
+                                                             Mobile number should be only numbers
+                                                        </p>
+
+                                  </div>
+                      </div>  
+                   
+                  </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                  <button type="submit" class="btn btn-brand" data-toggle="modal"  data-backdrop="">Generate OTP</button>
+              </div>
+            </div>
+             </form>
+          </div>
+      </div>
 
      <div id="book_modal" class="modal theme_modal" role="dialog">
   <div class="modal-dialog">
@@ -268,7 +458,7 @@
                     <input type="password" class="form-control theme" placeholder="Confirm Password" required 
                          validateEqual="pwd1"
                         name="cpwd1" ngModel
-                         #cpwd1="ngModel" (keyup)="autoTab2($event, pwd1.value.length )" >
+                         #cpwd1="ngModel"  >
 
                            <div [hidden]="cpwd1.valid || cpwd1.pristine" style="color:#fc6107">
                             Passwords did not match
@@ -310,46 +500,38 @@
         <hr> -->
         <div class="row" style="padding:20px 0px;">
             <div class="col-md-7">
-                <h2 class="titles" style="margin-bottom:15px;"><img src="./assets/images/iconimages/teneticon.png" class="pull-left" height="35" style="margin:0px 10px 10px 0px; " />OUR FACILITIES</h2>
-                <div class="row" style="margin-left:35px">
-                    <div class="col-xs-6">
-                            <p class="sub_heading">PATHOLOGY</p>
-                            <ul class="list-ul-default">
-                                <li>Clinical Biochemistry</li>
-                                <li>Hematology</li>
-                                <li>Clinical pathology</li>
-                                <li>Microbiology</li>
-                                <li>Immunology</li>
-                                <li>Cytology</li>
-                                <li>Histopathology</li>
-                                <li>Molecular Biology</li>
-                                <li>Cytogenetics</li>
-                            </ul>
-                            <p class="sub_heading">CARDIOLOGY</p>
-                            <ul class="list-ul-default">
-                                <li>ECG</li>
-                                <li>TMT</li>
-                                <li>2D ECHO</li>
-                            </ul>
-                        
-                    </div>
+            	<h2 class="titles" style="margin-bottom:15px;"><img src="./assets/images/iconimages/teneticon.png" class="pull-left" height="35" style="margin:0px 10px 10px 0px; ">OUR FACILITIES</h2>
+                <div class="row our_facilities_content" style="margin-left:35px">
+                	<div class="col-xs-6">
+                    	<h4 class="text-brandcolor">RADIOLOGY</h4>
+                        <p><strong>MRI - 3T/1.5T </strong>- MAGNETOM SKYRA - Total Imaging Matrix - 4th  Generation, Ultrafast Scan with Neuro and MSK Quite Suite. Go Brain - 5 min Fast Scan</p>
+						<p><strong>MDCT</strong> - Fast and Precise Imaging. SAFIRE - Low Dose CT. Inline Computer Aided Detection (CAD)</p>
+						<p><strong>ULTRASOUND</strong> - GE Logiq S7 R2, P9, F8 - Cross Beam Imaging, XD Clear, CEUS</p>
+						<p><strong>2D ECHO</strong> - STIC/Omniview. Auto IMT/EF</p>
+						<p><strong>BMD-DEXA</strong> - GE Lunar Prodigy Advance  - Encore/FRAX Software with Auto Analysis. Subject Trend Analysis</p>
+						<p><strong>Mammography</strong> - Mammomat-Automated Exposure control for Extremely Low Radiation Dose. Swivel Arm with Compression for Maximum Subject Comfort </p>
+						<p><strong>ECG/ENMG/EEG - Mac 2000 </strong> - Cutting Edge Marquette, 12 Lead ECG with Analysis Program and Resting ECG</p>
+						<p><strong>TMT - Mac 5500/Cardiosoft</strong> - Digital Signal with ECG Analysis Algorithms</p>
+						<p><strong>Computed Radiography</strong> - Image Intelligence with High Speed Processing, SAR with High Efficiency Dry Imager</p>
+					</div>
                    <div class="col-xs-6">
-                        <p class="sub_heading">RADIOLOGY</p>
-                        <ul class="list-ul-default">
-                            <li>High Resolution Ultrasound</li>
-                            <li>X-Ray</li>
-                            <li>Bone Mineral densitometry (BMD)</li>
-                            <li>Mammogram</li>
-                            <li>Pulmonary Function Test (PFT)</li>
-                        </ul>
-                        <p class="sub_heading">IMAGING</p>
-                        <ul class="list-ul-default">
-                            <li>MRI-3T/1.5T</li>
-                            <li>MDCT</li>
-                        </ul>
-                      
-                        
-                    </div>
+                    	<h4 class="text-brandcolor">PATHOLOGY</h4>
+                        <p><strong>LCMS </strong> - Newborn Screening/Metabolic Disorders/Vitamins/Immunosuppressants</p>
+						<p><strong>Genexpert</strong>- Tuberculosis</p>
+						<p><strong>Immunocap</strong>- Allergy Screening</p>
+						<p><strong>Liquid Based Cytology</strong>- Cervical Cancer</p>
+						<p><strong>PRISCA</strong> - An Advanced Prenatal Risk Calculation System</p>
+						<p><strong>HPLC</strong> - Automated System for Diabetic &amp; Thalassemia Testing</p>
+						<p><strong>Immuno Fixation Electrophoresis</strong>– Cancers</p>
+						<p><strong>Cytogenetics</strong> - Chromosomal Disorders</p>
+						<p><strong>Immunofluorescence</strong> - Autoimmune Disorders</p>
+						<p><strong>Multiplex RT PCR</strong> - Molecular Diagnostics</p>
+						<p><strong>Automated Clinical Chemistry Systems</strong></p>
+						<p><strong>Flow Cytometry</strong> - Analysis of Blood &amp; Body Fluid in Routine Hematology/Immunophenotyping</p>
+						<p><strong>Nephelometry</strong> – Quick &amp; Accurate Measurement of Plasma Proteins/Immunoglobulins</p>
+						<p><strong>Automated Microbial Identification and AST Systems</strong> </p>
+						<p><strong>Immunohistochemistry</strong> - Histopathology </p>
+					</div>
                 </div>
                 
             </div>
@@ -357,14 +539,26 @@
                 <div class="presentation_slider">
                   
                    <owl-carousel #smallcaro   [options]="{items: 1, dots: false, navigation: false,loop:true,autoplay:true,autoplayTimeout:2000}" [items]="images1"   [carouselClasses]="['owl-theme', 'row', 'sliding']">
-                 <div class="item" *ngFor="let img of images1;let i = index">
+                 <!-- <div class="item" *ngFor="let img of images1;let i = index">
                      <div class="thumbnail-image">
                          <img src="./assets/images/{{img}}"/>
                      </div>
-                 </div>
+                 </div> -->
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/01.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/02.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/03.png" width="100%"></div>
+
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/04.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/05.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/06.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/07.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/08.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/09.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/10.png" width="100%"></div>
+                 <div class="item" style="width: 458px; margin-right: 0px;"><img src="./assets/images/iconimages/services_400x400/11.png" width="100%"></div>
                </owl-carousel>
                 </div>
-                <div class="navigations_div" style="">
+                <!-- <div class="navigations_div" style="">
                     <div class="prev pull-left">
                         <img src="./assets/images/iconimages/leftarrow.png" (click)="movescaro(smallcaro,'left')" />
                     </div>
@@ -372,10 +566,11 @@
                         <img src="./assets/images/iconimages/rightarrow.png" (click)="movescaro(smallcaro,'right')"/>
                     </div>
                     <div class="clearfix"></div>
-                </div>
+                </div> -->
             </div>
             
         </div>
+        
         <hr>
         <div class="row" style="padding:20px 0px;">
             <div class="col-md-5">
@@ -398,7 +593,7 @@
                             <h4 class="text-center text-brandcolor">TENET<br>HUB</h4>
                             <p style="color:#1a1a1a">Imaging, Radiology &amp; Pathology</p>
                             <div class="line_separater" style=""></div>
-                            <p>360° DIAGNOSTICS .</p>
+                            <p>Houses Pathology, Radiology and Imaging - A 360 degree diagnosis.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -409,7 +604,7 @@
                             <h4 class="text-center text-brandcolor">TENET<br>PRO</h4>
                             <p style="color:#1a1a1a">Radiology & Pathology</p>
                             <div class="line_separater" style=""></div>
-                            <p>EXPERTS IN RADIOLOGY &amp; PATHOLOGY.</p>
+                            <p>Specialises in Radiology and Pathology.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -420,7 +615,7 @@
                             <h4 class="text-center text-brandcolor">TENET<br>EXPRESS</h4>
                             <p style="color:#1a1a1a">Pathology</p>
                             <div class="line_separater" style=""></div>
-                            <p>QUICK &amp; RESPONSIVE.</p>
+                            <p>For accurate, quick and convenient Pathology tests.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -431,7 +626,7 @@
                             <h4 class="text-center text-brandcolor">TENET<br>DOORSTEP</h4>
                             <p style="color:#1a1a1a">Pathology</p>
                             <div class="line_separater" style=""></div>
-                            <p>EASY &amp; CONVENIENT. At your doorstep.</p>
+                            <p>Collects blood samples and drops off results, from your home.</p>
                         </div>
                     </div>
                 </div>
@@ -453,7 +648,8 @@
                 <div class="tab-content">
                   <div id="home" class="tab-pane in active">
                     <div class="row">
-                        <ngx-loading [show]="loading['packages']"></ngx-loading>
+                        <!-- <ngx-loading [show]="loading['packages']"></ngx-loading> -->
+                        <div class="tenet-loader" *ngIf="loading['packages']" ><img src="./assets/images/monogram.svg"  /></div> 
                         <div class="col-md-12 package_slider_wrapper"  *ngIf="_packages?.length > 0" style="position:relative; padding:50px">
                             <div class="package_slider">
                                 <owl-carousel #packcaro   [options]="{items: 3, dots: false, navigation: false,loop:true,autoplay:false}"   [carouselClasses]="['owl-theme', 'row', 'sliding']">
@@ -582,14 +778,15 @@
                     <div class="testimonial_containter">
                         <div class="pull-left" style="font-size: 50px;"><i class="fa fa-quote-left"></i></div>
                         <div class="text">
-                         <p >I've had diabetes for more than 30 years, that lead to issues with my BP as well. Since I needed to get regular tests done to monitor my sugar & BP, travelling became a problem. But thanks to Tenet Express, I can get tested as and when required, without wasting time in commute.</p>
+                         <p >I am suffering from BP and diabetes and need regular checkup. Tenet's home sample collection is convenient and not expensive.  Their people are also very friendly. 
+                            </p>
                          <div class="user_details">
                             <div class="img_holder">
                                 <img src="./assets/images/iconimages/profileimage.png"/>
                                 
                             </div>
                             <div class="info">
-                                <h5>Pawan</h5>
+                                <h5>Naresh Varma</h5>
                                 <p>Hyderabad</p>
                              </div>
                              <div class="clearfix"></div>
@@ -600,14 +797,14 @@
                     <div class="testimonial_containter">
                         <div class="pull-left" style="font-size: 50px;"><i class="fa fa-quote-left"></i></div>
                         <div class="text">
-                         <p >One of my patients sustained multiple fractures, including major injuries to the skull. Time is of essence in cases like these and with Tenet's cutting-edge tech and quick turnaround times, I could assess and diagnose the optimum treatment for my patient!</p>
+                         <p >I know of one incident when a patient of mine who sustained multiple fractures was sent to Tenet in an emergency. They deal with emergencies quite well and expedite the whole scan and report. These things can save lives. </p>
                          <div class="user_details">
                             <div class="img_holder">
                                 <img src="./assets/images/iconimages/profileimage.png"/>
                                 
                             </div>
                             <div class="info">
-                                <h5>Praveen</h5>
+                                <h5>Dr.Sandeep</h5>
                                 <p>Hyderabad</p>
                              </div>
                              <div class="clearfix"></div>
@@ -618,14 +815,15 @@
                     <div class="testimonial_containter">
                         <div class="pull-left" style="font-size: 50px;"><i class="fa fa-quote-left"></i></div>
                         <div class="text">
-                         <p >After years of trying, my husband and I were elated to find out that we were pregnant! Anticipating a difficult pregnancy, I wanted the best prenatal care... And got just that! The staff at Tenet were patient and caring, expertly answering every question we threw at them</p>
+                         <p >I underwent my entire pre-pregnancy and during pregnancy tests and scan through Tenet and the experience was very good. 
+                            </p>
                          <div class="user_details">
                             <div class="img_holder">
                                 <img src="./assets/images/iconimages/profileimage.png"/>
                                 
                             </div>
                             <div class="info">
-                                <h5>Dayakar</h5>
+                                <h5>Praneetha</h5>
                                 <p>Hyderabad</p>
                              </div>
                              <div class="clearfix"></div>
@@ -636,7 +834,8 @@
                     <div class="testimonial_containter">
                         <div class="pull-left" style="font-size: 50px;"><i class="fa fa-quote-left"></i></div>
                         <div class="text">
-                         <p >I've been practicing medicine for more than 25 years and look forward to partnering with a diagnostic unit as dynamic as Tenet. With a wide range of reports that focus on attention to detail, I can send my patients to Tenet knowing that they will be looked after by certified and reliable personnel.</p>
+                         <p > My daughter Mira who had Asthma and every time we went to Tenet for spirometry, Ravi and Geetha, the attendants at Tenet made us feel so good. Our daughter has recovered well and a big thanks go to Ravi and Geetha along with our doctors. 
+                            </p>
                          <div class="user_details">
                             <div class="img_holder">
                                 <img src="./assets/images/iconimages/profileimage.png"/>
@@ -651,7 +850,7 @@
                         </div>
                         <div class="pull-right" style="font-size: 50px; margin-top:2%"><i class="fa fa-quote-right"></i></div>
                     </div>
-                    <div class="testimonial_containter">
+                    <!-- <div class="testimonial_containter">
                         <div class="pull-left" style="font-size: 50px;"><i class="fa fa-quote-left"></i></div>
                         <div class="text">
                          <p >Mira has had acute asthma since she was an infant. But hospitals can be scary for a child and every time we went for a test or scan, she would cry. Until her first visit to Tenet that is... Now she looks forward to meeting Ravi uncle and Geetha aunty, her consulting doctor and technician, every month!</p>
@@ -668,7 +867,7 @@
                          </div>
                         </div>
                         <div class="pull-right" style="font-size: 50px; margin-top:2%"><i class="fa fa-quote-right"></i></div>
-                    </div>
+                    </div> -->
                    
                 </owl-carousel>
                 </div>
@@ -677,7 +876,7 @@
                                     <img src="./assets/images/iconimages/leftarrow.png" (click)="movescaro(packcaro1,'left')"/>
                                 </div>
                                 <div class="next pull-right">
-                                    <img src="./assets/images/iconimages/rightarrow.png" (click)="movescaro(packcaro1,'left')"/>
+                                    <img src="./assets/images/iconimages/rightarrow.png" (click)="movescaro(packcaro1,'right')"/>
                                 </div>
                                 <div class="clearfix"></div>
                 </div>

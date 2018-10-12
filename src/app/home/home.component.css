@@ -181,7 +181,7 @@ padding: 0 3%;
 .presentaion_wrapper .navigations_div img{
 	width:20%
 }
-.testimonial_containter .fas.fa-quote-left,.testimonial_containter .fas.fa-quote-right{
+.testimonial_containter .fa.fa-quote-left,.testimonial_containter .fa.fa-quote-right{
 	color:#f05b25;
 }
 a{
@@ -201,4 +201,6 @@ input.form-control.theme.otp_input {
             font-size: 20px;
             height: 40px;
             text-align: center;
-          }
+		  }
+
+		

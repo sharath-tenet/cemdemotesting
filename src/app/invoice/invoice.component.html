@@ -6,9 +6,9 @@
 
                  <div *ngIf="order_data?.length>0" [ngStyle]="{'font-size': '24px'}">
                   <!--style="font-size:19px"; -->
-                  <div><a href="./account/order-history">Click Here to see Order Status</a></div>
+                  <!-- <div><a href="./account/order-history">Click Here to see Order Status</a></div> -->
                   <div  *ngFor="let pd of order_data">
-                   <p>Bill No. : {{pd.ordNo}} | <a target="_blank" href="http://208.163.37.165/IntgCEMS/orderinvoice/{{pd.message}}"><i title="Download the RCS" class="fa fa-arrow-down"></i></a></p> 
+                   <p>Bill No. : {{pd.ordNo}} | <a target="_blank" href="http://208.163.37.165/IntgCEMS/orderinvoice/{{pd.message}}"><i title="Download the Invoice" class="fa fa-arrow-down"></i>Invoice</a> |<a target="_blank" href="/bill-view/{{pd.ordNo}}"><i title="Check Order Status By Clicking on this link" class="fa fa-arrow-down"></i>Order Status</a></p> 
                  <!--  <p> Bill No. : {{pd.ordNo}} | </p>
                       <a target="_blank" href="http://208.163.37.165/IntgCEMS/orderinvoice/{{pd.message}}"><i title="Download the RCS" class="fa fa-arrow-down"></i></a> -->
                  <!-- <p >Bill No : 5744112 | TENET IDENTIFICATION NUMBER(TIN):RAJ5471</p> -->
@@ -16,6 +16,42 @@
                   </div>
             </div>
         </div>
+
+        <!--basic -->
+<div class="tenet-loader" *ngIf="loading['details']" ><img src="./assets/images/monogram.svg" /></div> 
+<div class="row" *ngIf="orderInfo1.length>0">
+    
+    <div class="col-md-12" >
+      <h4 class="titles" style="font-weight:600"><img src="./assets/images/iconimages/bag.png" class="pull-left" style="margin: -6px 01px 01px 0px;    width: 30px !important; " />{{orderInfo1[0].patient_name}}</h4>
+    
+      <div class="col-md-12 margin-bottom: 10px;" *ngFor="let ordInf1 of orderInfo1">
+        <div class="row" style="margin-bottom: 10px;background-color:#eee">
+          <div class="col-md-4" style=" border-right:1px solid #afafaf">
+            <h4 style="padding:10px 0; margin:0">{{ordInf1.test_name}}</h4>
+          </div>
+           <!-- <div>{{ getTestInstructions(ordInf1.tid) }}</div> -->
+          <div class="col-md-4" style="border-right:1px solid #afafaf">
+            <h4 style="padding:10px 0; margin:0">{{ ordInf1.order_type == 1? "Home collection" : "Visit Center"}}</h4>
+          </div>
+          <div class="col-md-4">
+         <!--    <h4 style="padding:10px 0; margin:0"> 29<sup>th</sup> Feb, 2018; 10.30 AM</h4> -->
+        <h4 style="padding:10px 0; margin:0">{{ordInf1.schedule_dt | date:'dd-MM-yyyy HH:mm a'}}</h4>
+          </div>
+        </div>
+       <!--  <div style="border-top:1px solid #a09191; margin:20px 0;"></div>  --> 
+        <p class="ft-16px m-b-15" *ngIf="testInstrs[ordInf1.tid][0].test_instructions != null"><b>Genaral Instructions</b></p>
+                <ul class="list-ul-default">
+                                            <li *ngIf="testInstrs[ordInf1.tid][0].test_instructions != null">{{ testInstrs[ordInf1.tid][0].test_instructions }}</li>
+                                       
+                </ul>
+                 <div [ngStyle]="{'border-top':'1px solid #a09191','margin':'20px 0'}" *ngIf="testInstrs[ordInf1.tid][0].test_instructions != null"></div>
+      </div>
+   
+    
+    </div> 
+
+    </div>
+
 
           <div class="row" *ngFor="let t of orderInfo;let i = index">
     <div class="col-md-12" >
@@ -53,40 +89,6 @@
     </div>  
       
 
-<!--basic -->
-<div class="tenet-loader" *ngIf="loading['details']" ><img src="./assets/images/monogram.svg" /></div> 
-<div class="row" *ngIf="orderInfo1.length>0">
-    
-    <div class="col-md-12" >
-      <h4 class="titles" style="font-weight:600"><img src="./assets/images/iconimages/bag.png" class="pull-left" style="margin: -6px 01px 01px 0px;    width: 30px !important; " />{{orderInfo1[0].patient_name}}</h4>
-    
-      <div class="col-md-12 margin-bottom: 10px;" *ngFor="let ordInf1 of orderInfo1">
-        <div class="row" style="margin-bottom: 10px;background-color:#eee">
-          <div class="col-md-4" style=" border-right:1px solid #afafaf">
-            <h4 style="padding:10px 0; margin:0">{{ordInf1.test_name}}</h4>
-          </div>
-           <!-- <div>{{ getTestInstructions(ordInf1.tid) }}</div> -->
-          <div class="col-md-4" style="border-right:1px solid #afafaf">
-            <h4 style="padding:10px 0; margin:0">{{ ordInf1.order_type == 1? "Home collection" : "Visit Center"}}</h4>
-          </div>
-          <div class="col-md-4">
-         <!--    <h4 style="padding:10px 0; margin:0"> 29<sup>th</sup> Feb, 2018; 10.30 AM</h4> -->
-        <h4 style="padding:10px 0; margin:0">{{ordInf1.schedule_dt | date:'dd-MM-yyyy HH:mm a'}}</h4>
-          </div>
-        </div>
-       <!--  <div style="border-top:1px solid #a09191; margin:20px 0;"></div>  --> 
-        <p class="ft-16px m-b-15" *ngIf="testInstrs[ordInf1.tid][0].test_instructions != null"><b>Genaral Instructions</b></p>
-                <ul class="list-ul-default">
-                                            <li *ngIf="testInstrs[ordInf1.tid][0].test_instructions != null">{{ testInstrs[ordInf1.tid][0].test_instructions }}</li>
-                                       
-                </ul>
-                 <div [ngStyle]="{'border-top':'1px solid #a09191','margin':'20px 0'}" *ngIf="testInstrs[ordInf1.tid][0].test_instructions != null"></div>
-      </div>
-   
-    
-    </div> 
-
-    </div>
 
 
 
